@@ -34,7 +34,6 @@ namespace CulturNary.Web.Controllers
             try
             {
                 var userId = _userManager.GetUserId(User);
-
                 var person = await _context.People
                                     .Include(p => p.Collections)
                                     .Include(p => p.Recipes)

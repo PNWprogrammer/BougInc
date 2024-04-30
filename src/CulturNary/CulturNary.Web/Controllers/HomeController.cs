@@ -56,6 +56,18 @@ public class HomeController : Controller
     {
         return View();
     }
+    
+    [Authorize(Roles = "Signed,Admin")]
+    public IActionResult Videos()
+    {
+        return View();
+    }
+    
+    [Authorize(Roles = "Signed,Admin")]
+    public IActionResult Restaurants()
+    {
+        return View();
+    }
 
     [Route("Home/Error/{code?}")]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

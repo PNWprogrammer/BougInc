@@ -48,6 +48,12 @@
                                     <!-- Add more social links here -->
                                 </div>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Restaurants">Restaurants</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Videos">Meal Videos</a>
+                            </li>
                         }
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
@@ -92,12 +98,15 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <script src="~/js/NavItemsOnClick.js"></script>
     <script src="~/js/Index.js"></script>
     <script src="~/js/Collections.js"></script>
     <script src="~/js/Groceries.js"></script>
+    <script src="~/js/Restaurants.js"></script>
+    <script src="~/js/Videos.js"></script>
 </body>
 </html>
 

@@ -19,13 +19,13 @@ public partial class CulturNaryDbContext : DbContext
 
     public virtual DbSet<FavoriteRecipe> FavoriteRecipes { get; set; }
 
-    public virtual DbSet<FriendRequest> FriendRequests { get; set; }
-
-    public virtual DbSet<Friendship> Friendships { get; set; }
-
     public virtual DbSet<Person> People { get; set; }
 
     public virtual DbSet<Recipe> Recipes { get; set; }
+
+    public virtual DbSet<Restaurant> Restaurants { get; set; }
+
+    public virtual DbSet<Video> Videos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=CulturNaryDbContextConnection");
@@ -34,7 +34,7 @@ public partial class CulturNaryDbContext : DbContext
     {
         modelBuilder.Entity<Collection>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Collecti__3213E83FD0FEBABB");
+            entity.HasKey(e => e.Id).HasName("PK__Collecti__3213E83F6C0C7FCA");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Description)
@@ -55,12 +55,12 @@ public partial class CulturNaryDbContext : DbContext
 
             entity.HasOne(d => d.Person).WithMany(p => p.Collections)
                 .HasForeignKey(d => d.PersonId)
-                .HasConstraintName("FK__Collectio__perso__57A801BA");
+                .HasConstraintName("FK__Collectio__perso__3B0BC30C");
         });
 
         modelBuilder.Entity<FavoriteRecipe>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Favorite__3213E83F8B7F8019");
+            entity.HasKey(e => e.Id).HasName("PK__Favorite__3213E83FAD7AC31C");
 
             entity.ToTable("FavoriteRecipe");
 
@@ -137,11 +137,11 @@ public partial class CulturNaryDbContext : DbContext
 
         modelBuilder.Entity<Person>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Person__3213E83FAEB4DF3B");
+            entity.HasKey(e => e.Id).HasName("PK__Person__3213E83FE20AC1F5");
 
             entity.ToTable("Person");
 
-            entity.HasIndex(e => e.IdentityId, "UQ__Person__D51AF5F548C3684E").IsUnique();
+            entity.HasIndex(e => e.IdentityId, "UQ__Person__D51AF5F5B5DD40B4").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.IdentityId).HasColumnName("identity_id");
@@ -149,7 +149,7 @@ public partial class CulturNaryDbContext : DbContext
 
         modelBuilder.Entity<Recipe>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Recipes__3213E83F460A2E83");
+            entity.HasKey(e => e.Id).HasName("PK__Recipes__3213E83F0FF6F7DC");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CollectionId).HasColumnName("collection_id");
@@ -170,11 +170,11 @@ public partial class CulturNaryDbContext : DbContext
 
             entity.HasOne(d => d.Collection).WithMany(p => p.Recipes)
                 .HasForeignKey(d => d.CollectionId)
-                .HasConstraintName("FK__Recipes__collect__5A846E65");
+                .HasConstraintName("FK__Recipes__collect__3DE82FB7");
 
             entity.HasOne(d => d.Person).WithMany(p => p.Recipes)
                 .HasForeignKey(d => d.PersonId)
-                .HasConstraintName("FK__Recipes__person___5B78929E");
+                .HasConstraintName("FK__Recipes__person___3EDC53F0");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -39,3 +39,28 @@ CREATE TABLE FavoriteRecipe (
     Uri VARCHAR(MAX),
     tags VARCHAR(MAX),
 );
+
+-- Step 4: Create the Videos table
+CREATE TABLE Videos (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    person_id INT,
+    video_name VARCHAR(255) NOT NULL,
+    video_type VARCHAR(100),
+    video_link VARCHAR(MAX),
+    video_notes VARCHAR(MAX),
+    FOREIGN KEY (person_id) REFERENCES Person(id)
+);
+
+-- Step 5: Create the Restaurants table
+CREATE TABLE Restaurants (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    person_id INT,
+    restaurants_name VARCHAR(255) NOT NULL,
+    restaurants_address VARCHAR(MAX),
+    restaurants_website VARCHAR(MAX),
+    restaurants_menu VARCHAR(MAX),
+    restaurants_phone_number VARCHAR(20),
+    restaurants_notes VARCHAR(MAX),
+    restaurant_type VARCHAR(100)
+    FOREIGN KEY (person_id) REFERENCES Person(id)
+);

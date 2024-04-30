@@ -29,7 +29,9 @@ namespace CulturNaryBDDProject.Shared
             {"Collections", "/Home/Collections"},
             {"ProfileEditName", "/Identity/Account/Manage/EditDisplayName?"},
             {"ProfileEditBio", "/Identity/Account/Manage/EditBiography?"},
-            {"ProfileEditPicture", "/Identity/Account/Manage/EditProfileImage?"}
+            {"ProfileEditPicture", "/Identity/Account/Manage/EditProfileImage?"},
+            {"Videos", "/Home/Videos"},
+            {"Restaurants", "/Home/Restaurants"},
 
         };
 

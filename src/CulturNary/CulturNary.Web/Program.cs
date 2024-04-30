@@ -31,6 +31,15 @@ builder.Services.AddScoped<IFriendshipRepository, FriendshipRepository>();
 builder.Services.AddScoped<IFriendRequestRepository, FriendRequestRepository>();
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddHttpClient<MealPlannerService>();
+builder.Services.AddScoped<IGoogleMapsService, GoogleMapsService>();
+
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddUserSecrets<Program>() // Add user secrets
+    .Build();
+
+string GoogleMapsApiKey = configuration["GoogleMapsApiKey"];
 
 //add a new repo builder.Services.AddScoped<interface, repo>();
 // Add services to the container.
@@ -64,11 +73,9 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("RequiresSignedRole",
                         policy => policy.RequireRole("Signed"));
 });
-
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 builder.Services.Configure<AzureStorageConfig>(builder.Configuration.GetSection("AzureStorageConfig"));
-
 builder.Services.AddScoped<ImageStorageService>();
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
 {
